@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Nat's Space</title>
-
 <!-- ===========================
 BASE STYLES
 =========================== -->
@@ -18,7 +17,6 @@ BASE STYLES
 #cookie-banner * {
     margin-bottom: 0;
 }
-
 #cookie-banner button {
     margin-top: 0px;
 }
@@ -32,12 +30,10 @@ html, body {
     max-width: 100%;
     margin: 0;
 }
-
 /* Headings */
 h1, h2, h3 {
     font-family: Copperplate, "Copperplate Gothic Light", fantasy;
 }
-
 h1 {
     font-size: clamp(18.2rem, 20.5vw, 19.5rem);
     line-height: 1.15;
@@ -61,14 +57,12 @@ a {
     color: black;        
     text-decoration: underline;
   }
-
 /* Layout helpers */
 .container {
     width: 90%;
     max-width: 100vw;
     margin: 0 auto;
 }
-
 /* ===========================
       SIDEBAR NAVIGATION
 =========================== */
@@ -83,7 +77,6 @@ a {
     z-index: 10000;
     font-size: 18px;
 }
-
 .sidebar {
     position: fixed;
     left: 0;
@@ -96,11 +89,9 @@ a {
     padding-top: 80px;
     z-index: 9990;
 }
-
 .sidebar.open {
     transform: translateX(0);
 }
-
 .sidebar a {
     display: block;
     padding: 15px 20px;
@@ -108,15 +99,12 @@ a {
     text-decoration: none;
     font-size: 18px;
 }
-
 .sidebar a:hover {
     background: #f7aac0;
 }
-
 /* ===========================
       HEADER
 =========================== */
-
 /* Header nur für das Bild */
 .header {
     width: 100%;
@@ -142,16 +130,13 @@ a {
         font-size: clamp(6rem, 16vw, 8rem);
         line-height: 1;
     }
-
     h2 {
         font-size: clamp(1.8rem, 6vw, 2.4rem);
     }
-
     .hero-header {
         height: 70vh;
     }
 }
-
 /* ===========================
       ABOUT
 =========================== */
@@ -169,8 +154,6 @@ a {
     border-radius: 8px;
     margin-top: 10px;
 }
- 
-
 /* ===========================
       SLIDESHOW
 =========================== */
@@ -186,7 +169,6 @@ a {
     overflow: hidden;      /* important */
     background: #f4f4f4;
 }
-
 .slide {
     width: 100%;
     height: 100%;
@@ -194,7 +176,6 @@ a {
     align-items: center;
     justify-content: center;
 }
-
 .slide img {
     width: 100%;
     height: 100%;
@@ -203,17 +184,14 @@ a {
     object-fit: contain;
     border-radius: 5px;
 }
-
 @media (max-width: 700px) {
     .slideshow-container {
         width: 100%;
     }
-
     .prev {
         left: 5px;
         font-size: 10vw;
     }
-
     .next {
         right: 5px;
         font-size: 10vw;
@@ -224,23 +202,19 @@ a {
     width: 100%;
     height: 100%;
 }
-
 .slide-link img {
     cursor: pointer;
 }
-
 .slide-link:hover img {
     transform: scale(1.02);
     transition: transform 0.3s ease;
 }
-
 /* ===========================
       COMMENTS
 =========================== */
 #comments {
     margin-top: 20px;
 }
-
 .comment {
     background: #FFC5D3;
     padding: 12px;
@@ -248,13 +222,11 @@ a {
     margin-top: 12px;
     border-left: 5px solid #333;
 }
-
 input, textarea {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
 }
-
 button {
     padding: 10px 16px;
     background: #FFC5D3;
@@ -264,12 +236,10 @@ button {
     cursor: pointer;
     transition: .2s;
 }
-
 button:hover {
     background: #555;
     color: white;
 }
-
 .delete-btn {
     float: right;
     background: #ff6b6b;
@@ -278,7 +248,6 @@ button:hover {
     border-radius: 4px;
     display: none;
 }
-
 .delete-btn.visible {
     display: inline-block;
 }
@@ -293,13 +262,11 @@ button:hover {
     z-index: 99999;
     transition: 0.2s;
 }
-
 #admin-secret:hover {
     opacity: 0.3; /* slightly visible when hovered */
     background: rgba(0,0,0,0.1);
     border-radius: 50%;
 }
-
 /* ===========================
       COOKIE BANNER
 =========================== */
@@ -319,7 +286,6 @@ button:hover {
     z-index: 99999;
     box-shadow: 0 4px 10px rgba(0,0,0,.2);
 }
-
 /* ===========================
       FOOTER
 =========================== */
@@ -335,23 +301,19 @@ footer {
     header {
         height: 70vh; /* more elegant framing on big screens */
     }
-
-   
 }
 @media (max-width: 700px) {
     body {
         overflow-x: hidden;
     }
-
     .container {
         width: 92%;
     }
 }
-
 </style>
 </head>
+ 
 <body>
-
 <!-- ======================================
           COOKIE DISCLAIMER
 ====================================== -->
@@ -362,12 +324,10 @@ footer {
     <br><br>
     <button onclick="acceptCookies()">OK</button>
 </div>
-
 <!-- ======================================
           SIDEBAR + MENU BUTTON BLOG EINFÜGEN WENN ONLINE !!!!!!!!!!!!!!
 ====================================== -->
 <div class="menu-toggle" onclick="toggleMenu()">☰ Menu</div>
-
 <nav class="sidebar" id="sidebar">
     <a href="#about">About</a>
     <a href="#gallery">Gallery</a>
@@ -376,7 +336,6 @@ footer {
     <a href="#maps">Maps</a>
     <a href="#comment-section">Comments</a>
 </nav>
-
 <!-- ======================================
           HEADER
 ====================================== -->
@@ -385,7 +344,6 @@ footer {
         <h1>Nat's <br> Space</h1>
     </div>    
 </header>
-
 <!-- ======================================
           ABOUT
 ====================================== -->
@@ -401,7 +359,6 @@ Alongside the archive, my blog features essays and thought pieces on stickers an
 and in-depth discussions of individual stickers, sticker cultures, and emerging trends. Currently, I am putting a different genre of stickers in the spotlight every tuesday. <br> Feel free to follow my <a href="substack.com/@stickersbynatalie" text-decoration: underline; text-decoration-color: #000000; ">substack</a> to stay up to date. If you come across a sticker you’d like to share, please do not to message me. I would be delighted to
 include it in the collection.</p>
         </div>    
-   </p>
     </div>
 </section>
 <!-- ======================================
@@ -419,57 +376,39 @@ include it in the collection.</p>
 <section id="gallery" class="container">
     <h2> Gallery </h2>
     <p>Here are some of my favourite encounters from the last couple of weeks. Look at the the diverse range of topics and artforms chosen by the designers! </p>
-    
     <div class="slideshow-container">
-
         <div class="slide">
                 <img src="011025-Bruce Hwy2.jpeg"> 
         </div>
-
         <div class="slide">
             <img src="031025-Nelly Bay Rd 3.jpeg">
         </div>
-     
         <div class="slide">
                <img src="031025-The Forts 2.jpeg">
            </div>
-     
         <div class="slide">
                <img src="051025-Flinders St 3.jpeg">
            </div>
-     
         <div class="slide">
                <img src="121125-Elgin St 2.jpeg">
            </div>
-     
         <div class="slide">
                <img src="121125-Keppel St 1.jpeg">
            </div>
-     
         <div class="slide">
                <img src="130825-Parkville Campus UniMelb 1.jpeg">
            </div>
-     
         <div class="slide">
                <img src="230825-Swanston St.jpeg">
            </div>
-     
         <div class="slide">
                <img src="260725-Queensberry St 1.jpeg">
            </div>
-     
-        <div class="slide">
-               <img src="290925-Mount Sorrow1.jpeg">
-           </div>
-     
         <div class="slide">
                <img src="300925-Aplin St5.jpeg">
         </div>
-
     </div>
-
 </section>
-
 <!-- ======================================
           PUBLICATIONS
 ====================================== -->
@@ -484,7 +423,6 @@ include it in the collection.</p>
         <p>The Ins and Outs Around the KU Leuven-Backed Documentary "Not in My Country", The Fly, 23 May 2025, <a href="https://theflymag.substack.com/p/a-ku-leuven-controversial-story" >https://theflymag.substack.com/p/a-ku-leuven-controversial-story</a> </p>
     </div>
 </section>
-
 <!-- ======================================
           MAPS
 ====================================== -->
@@ -493,7 +431,6 @@ include it in the collection.</p>
     <p> This map documents the never-ending process of my data collection. Whether you are looking for inspiration for your own artistic practice, branding, or need data for a research project, have a look at my collection! </p>
  <div class="flourish-embed flourish-chart" data-src="visualisation/27002752"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/27002752/thumbnail" width="100%" alt="visualization" /></noscript></div>
 </section>
-
 <!-- ======================================
           COMMENTS
 ====================================== -->
@@ -506,7 +443,6 @@ include it in the collection.</p>
     <div id="admin-secret" onclick="adminLogin()"></div>
     <div id="comments"></div>
 </section>
-
 <!-- ======================================
           FOOTER
 ====================================== -->
@@ -518,10 +454,7 @@ include it in the collection.</p>
     <a href="substack.com/@stickersbynatalie/">Substack</a href> |
     <a href="https://orcid.org/0009-0006-8447-2743">ORCID</a href> |
     <a href="https://www.instagram.com/na.tzl/">Instagram</a>
-  
-    </p>
 </footer>
-
 <!-- ======================================
           JAVASCRIPT
 ====================================== -->
@@ -537,31 +470,24 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("cookie-banner").style.display = "block";
     }
 });
-
 function acceptCookies() {
     localStorage.setItem("cookiesAccepted", "true");
     document.getElementById("cookie-banner").style.display = "none";
 }
-
 /* ------------------- SLIDESHOW ------------------- */
 let slideIndex = 0;
 showSlides(slideIndex);
-
 // Pfeile
 function changeSlide(n) {
     showSlides(slideIndex += n);
 }
-
 function showSlides(n) {
     const slides = document.getElementsByClassName("slide");
-
     if (n >= slides.length) { slideIndex = 0; }
     if (n < 0) { slideIndex = slides.length - 1; }
-
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
-
     slides[slideIndex].style.display = "block";
 }
 // Pfeilsteuerung
@@ -577,64 +503,48 @@ function showSlides(n) {
     const slides = document.getElementsByClassName("slide");
     if (n >= slides.length) { slideIndex = 0; }
     if (n < 0) { slideIndex = slides.length - 1; }
-
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
-
     slides[slideIndex].style.display = "block";
 }
-
 /* ------------------- COMMENTS ------------------- */
 let isAdmin = false;
-
 // Load on startup
 document.addEventListener("DOMContentLoaded", () => {
     const saved = JSON.parse(localStorage.getItem("comments")) || [];
     const commentSection = document.getElementById("comments");
-
     saved.forEach((entry, i) => {
         addCommentToDOM(entry.name, entry.text, i);
     });
 });
-
 // Add comment to page
 function addCommentToDOM(name, text, index) {
     const commentSection = document.getElementById("comments");
-
     const div = document.createElement("div");
     div.classList.add("comment");
     div.dataset.index = index;
-
     div.innerHTML = `
         <strong>${name}</strong>
         <p>${text}</p>
         <button class="delete-btn" onclick="deleteComment(${index})">Delete</button>
     `;
-
     commentSection.appendChild(div);
 }
-
 // Add new
 function addComment() {
     const name = document.getElementById("username").value.trim();
     const text = document.getElementById("commentText").value.trim();
-
     if (!name || !text) return alert("Please enter name and comment.");
-
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
     comments.unshift({ name, text });
     localStorage.setItem("comments", JSON.stringify(comments));
-
     document.getElementById("comments").innerHTML = "";
     comments.forEach((c, i) => addCommentToDOM(c.name, c.text, i));
-
     applyAdminVisibility();
-
     document.getElementById("username").value = "";
     document.getElementById("commentText").value = "";
 }
-
 // Admin login
 function adminLogin() {
     const pw = prompt("Enter admin password:");
@@ -646,27 +556,21 @@ function adminLogin() {
         alert("Incorrect password.");
     }
 }
-
 // Show delete buttons when admin
 function applyAdminVisibility() {
     document.querySelectorAll(".delete-btn").forEach(btn => {
         btn.style.display = isAdmin ? "inline-block" : "none";
     });
 }
-
 // Delete individual comment
 function deleteComment(index) {
     if (!isAdmin) return alert("Admin only.");
-
     if (!confirm("Delete this comment?")) return;
-
     const comments = JSON.parse(localStorage.getItem("comments")) || [];
     comments.splice(index, 1);
     localStorage.setItem("comments", JSON.stringify(comments));
-
     document.getElementById("comments").innerHTML = "";
     comments.forEach((c, i) => addCommentToDOM(c.name, c.text, i));
-
     applyAdminVisibility();
 }
 </script>
