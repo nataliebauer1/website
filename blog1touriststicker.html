@@ -71,7 +71,21 @@ a {
     overflow: hidden;      /* important */
     background: #f4f4f4;
 }
-
+.slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 5px;
+}
 /* ===========================
       BLOG POSTS
 =========================== */
@@ -86,12 +100,10 @@ a {
     justify-content: space-between;
     align-items: baseline;
 }
-
 .post-header .date {
     font-size: 0.9rem;
     color: #555;
 }
-
 /* ===========================
       FOOTER
 =========================== */
@@ -107,8 +119,6 @@ footer {
     header {
         height: 70vh; /* more elegant framing on big screens */
     }
-
-   
 }
 @media (max-width: 700px) {
     body {
@@ -119,9 +129,9 @@ footer {
         width: 92%;
     }
 }
-
 </style>
 </head>
+ 
 <body>
 <section id="blog" class="container">
        <div class="blog-post">
@@ -140,9 +150,11 @@ The tourist sticker leaves a mark, most of the time showing a symbol typical for
 it whispers, “I was here”, even when the person who placed it is long gone. However, thanks to travel influencers and other guides, tourists tend to end up in similar places,
 leaving many “I was here”s for the next visitor to line up. From experience (and maybe placing a lot of good will in people), they hardly ever get overstickered. Instead, a mural by visitors, who, if not anything else, claimed a tiny part of the place they came to, emerges. </p>
   <div class="slideshow-container">
-        <img src="Touriststicker.JPG">
+     <div class="slide">
+                <img src="Touriststicker.JPG"> 
+     </div>   
   </div>
- <p> <i>Natalie Bauer, Krabi, Thailand, 2026</i></p>
+ <p> <i>(Natalie Bauer, Krabi, Thailand, 2026)</i></p>
         <h3>Sources</h3>
  <p> Awcock, H. (2021). Stickin’ it to the man: The geographies of protest stickers. Area, 53(3), 522–530. <a href="https://doi.org/10.1111/area.12720">https://doi.org/10.1111/area.12720</a href>
 </p>
