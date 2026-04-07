@@ -524,6 +524,7 @@ function showSlides(n) {
     slides[slideIndex].style.display = "block";
 }
  </script>
+ /* ---------------- COMMENTS ---------------- */
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const supabaseUrl = "https://tcsxyrswqqxrqguuxbes.supabase.co";
@@ -603,47 +604,6 @@ async function addComment() {
     loadComments();
 }
 
-/* ---------------- ADMIN LOGIN ---------------- */
-function adminLogin() {
-    const pw = prompt("Enter admin password:");
-
-    if (pw === "MarieMarcks77!") {
-        isAdmin = true;
-        applyAdminVisibility();
-        alert("Admin mode enabled.");
-    } else {
-        alert("Incorrect password.");
-    }
-}
-
-/* ---------------- ADMIN BUTTONS ---------------- */
-function applyAdminVisibility() {
-    document.querySelectorAll(".delete-btn").forEach(btn => {
-        btn.style.display = isAdmin ? "inline-block" : "none";
-    });
-}
-
-/* ---------------- DELETE COMMENT ---------------- */
-async function deleteComment(id) {
-    if (!isAdmin) {
-        alert("Admin only.");
-        return;
-    }
-
-    if (!confirm("Delete this comment?")) return;
-
-    const { error } = await db
-        .from("comments")
-        .delete()
-        .eq("id", id);
-
-    if (error) {
-        console.error(error);
-        return;
-    }
-
-    loadComments();
-}
 
 /* ---------------- PAGE LOAD ---------------- */
 document.addEventListener("DOMContentLoaded", loadComments);
