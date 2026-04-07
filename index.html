@@ -523,46 +523,90 @@ function showSlides(n) {
     }
     slides[slideIndex].style.display = "block";
 }
-/* ------------------- COMMENTS ------------------- */
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabaseUrl = "https://tcsxyrswqqxrqguuxbes.supabase.co";
+const supabaseKey = "sb_publishable_wrjKF86aIrg5oPaNBCVKkg_3i9CFFeC";
+
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
 let isAdmin = false;
-// Load on startup
-document.addEventListener("DOMContentLoaded", () => {
-    const saved = JSON.parse(localStorage.getItem("comments")) || [];
-    const commentSection = document.getElementById("comments");
-    saved.forEach((entry, i) => {
-        addCommentToDOM(entry.name, entry.text, i);
+
+/* ---------------- COMMENTS LOAD ---------------- */
+async function loadComments() {
+    const { data, error } = await supabase
+        .from("comments")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+    const container = document.getElementById("comments");
+    container.innerHTML = "";
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    data.forEach(comment => {
+        addCommentToDOM(comment);
     });
-});
-// Add comment to page
-function addCommentToDOM(name, text, index) {
-    const commentSection = document.getElementById("comments");
+
+    applyAdminVisibility();
+}
+
+/* ---------------- COMMENT DISPLAY ---------------- */
+function addCommentToDOM(comment) {
+    const container = document.getElementById("comments");
+
     const div = document.createElement("div");
     div.classList.add("comment");
-    div.dataset.index = index;
+    div.dataset.id = comment.id;
+
     div.innerHTML = `
-        <strong>${name}</strong>
-        <p>${text}</p>
-        <button class="delete-btn" onclick="deleteComment(${index})">Delete</button>
+        <strong>${comment.name}</strong>
+        <p>${comment.comment}</p>
+        <button class="delete-btn" onclick="deleteComment(${comment.id})">Delete</button>
     `;
-    commentSection.appendChild(div);
+
+    container.appendChild(div);
 }
-// Add new
-function addComment() {
+
+/* ---------------- ADD COMMENT ---------------- */
+async function addComment() {
     const name = document.getElementById("username").value.trim();
     const text = document.getElementById("commentText").value.trim();
-    if (!name || !text) return alert("Please enter name and comment.");
-    const comments = JSON.parse(localStorage.getItem("comments")) || [];
-    comments.unshift({ name, text });
-    localStorage.setItem("comments", JSON.stringify(comments));
-    document.getElementById("comments").innerHTML = "";
-    comments.forEach((c, i) => addCommentToDOM(c.name, c.text, i));
-    applyAdminVisibility();
+
+    if (!name || !text) {
+        alert("Please enter name and comment.");
+        return;
+    }
+
+    const { error } = await supabase
+        .from("comments")
+        .insert([
+            {
+                name: name,
+                comment: text
+            }
+        ]);
+
+    if (error) {
+        console.error(error);
+        alert("Could not save comment.");
+        return;
+    }
+
     document.getElementById("username").value = "";
     document.getElementById("commentText").value = "";
+
+    loadComments();
 }
-// Admin login
+
+/* ---------------- ADMIN LOGIN ---------------- */
 function adminLogin() {
     const pw = prompt("Enter admin password:");
+
     if (pw === "MarieMarcks77!") {
         isAdmin = true;
         applyAdminVisibility();
@@ -571,23 +615,38 @@ function adminLogin() {
         alert("Incorrect password.");
     }
 }
-// Show delete buttons when admin
+
+/* ---------------- ADMIN BUTTONS ---------------- */
 function applyAdminVisibility() {
     document.querySelectorAll(".delete-btn").forEach(btn => {
         btn.style.display = isAdmin ? "inline-block" : "none";
     });
 }
-// Delete individual comment
-function deleteComment(index) {
-    if (!isAdmin) return alert("Admin only.");
+
+/* ---------------- DELETE COMMENT ---------------- */
+async function deleteComment(id) {
+    if (!isAdmin) {
+        alert("Admin only.");
+        return;
+    }
+
     if (!confirm("Delete this comment?")) return;
-    const comments = JSON.parse(localStorage.getItem("comments")) || [];
-    comments.splice(index, 1);
-    localStorage.setItem("comments", JSON.stringify(comments));
-    document.getElementById("comments").innerHTML = "";
-    comments.forEach((c, i) => addCommentToDOM(c.name, c.text, i));
-    applyAdminVisibility();
+
+    const { error } = await supabase
+        .from("comments")
+        .delete()
+        .eq("id", id);
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    loadComments();
 }
+
+/* ---------------- PAGE LOAD ---------------- */
+document.addEventListener("DOMContentLoaded", loadComments);
 </script>
 </body>
 </html>
